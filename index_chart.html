@@ -1,0 +1,95 @@
+<html>
+  <head>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawInMigrationChart);
+      google.charts.setOnLoadCallback(drawOutMigrationChart);
+
+
+      function drawInMigrationChart() {
+        var data = google.visualization.arrayToDataTable([
+         ['State popu', 'Migration %'],
+         [ 8,      12],
+         [ 4,      5.5],
+         [ 11,     14],
+         [ 4,      5],
+         [ 3,      3.5],
+         [ 6.5,    7]
+       ]);
+
+        var options = {'legend': 'left',
+                       'title':'Percentage of IN Migration',
+                       'width':400,
+                       'height':350,
+                       'is3D': true,
+                       animation:{'startup':true,'duration':1000,'easing':'inAndOut'},
+                        crosshair: { trigger: 'both', orientation: 'both' },
+                       trendlines: {
+           0: {
+             type: 'polynomial',
+             degree: 3,
+             visibleInLegend: true,
+           }
+         }
+                        };
+
+        var chart = new google.visualization.ScatterChart(document.getElementById('inmigration_chart_div'));
+        chart.draw(data, options);
+      }
+
+      function drawOutMigrationChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'State');
+        data.addColumn('number', 'Migration');
+        data.addRows([
+          ['USA', 3],
+          ['London', 1],
+          ['Germany', 1],
+          ['Russia', 1],
+          ['Australia', 2]
+        ]);
+
+        var piechart_options = {legend: 'left',
+                       title:'Percentage of OUT Migration',
+                       width:400,
+                       height:350,
+                       //is3D: true,
+                       animation:{'startup':true,'duration':1000,'easing':'linear'}
+                        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('outmigration_pie_chart_div'));
+        chart.draw(data, piechart_options);
+
+        var barchart_options = {legend: 'left',
+                       title:'Percentage of OUT Migration',
+                       width:400,
+                       height:350,
+                       //is3D: true,
+                       animation:{'startup':true,'duration':1000,'easing':'linear'}
+                        };
+
+
+        var chart = new google.visualization.BarChart(document.getElementById('outmigration_bar_chart_div'));
+        chart.draw(data, barchart_options);
+
+      }
+
+    </script>
+  </head>
+
+  <body>
+    <table class="columns">
+      <tr>
+      <td><div id="inmigration_chart_div" style="border: 2px solid #ccc"></div></td>
+      <td><div id="outmigration_pie_chart_div" style="border: 2px solid #ccc"></div></td>
+      <td><div id="outmigration_bar_chart_div" style="border: 2px solid #ccc"></div></td>
+    </tr>
+
+    </table>
+  </body>
+</html>
