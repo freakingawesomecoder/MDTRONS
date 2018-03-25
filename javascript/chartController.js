@@ -1,6 +1,55 @@
 
 //Line chart related changes
 function lineChart() {
+	var myObj1 = [{
+		'year':1990,
+		'reason':"Work based",
+		'totalmigrants': 86
+	},{
+		'year':1991,
+		'reason':"Work based",
+		'totalmigrants': 114
+	},{
+		'year':1992,
+		'reason':"Work based",
+		'totalmigrants': 106
+	},{
+		'year':1994,
+		'reason':"Work based",
+		'totalmigrants': 106
+	},{
+		'year':1990,
+		'reason':"natural based",
+		'totalmigrants': 282
+	},{
+		'year':1991,
+		'reason':"natural based",
+		'totalmigrants': 350
+	},{
+		'year':1992,
+		'reason':"natural based",
+		'totalmigrants': 411
+	},{
+		'year':1994,
+		'reason':"natural based",
+		'totalmigrants': 502
+	}];
+var years = _.pluck(myObj1, 'year');
+var mainyears = _.uniq(years);
+var reasons = _.pluck(myObj1, 'reason');
+var mainreasons = _.uniq(reasons);
+var datashare = [];
+for (var i = 0; i < mainreasons.length; i++) {
+
+	var reasonCat = _.filter(myObj1, { 'reason': mainreasons[i] });
+	var obj = {};
+	obj.data =  _.pluck(reasonCat, 'totalmigrants');
+	obj.label = mainreasons[i];
+	obj.borderColor =  getRandomColor();
+	obj.fill=  false;
+	datashare.push(obj);
+}
+
 
 var optionset = {
 	responsive: false,
@@ -16,29 +65,8 @@ var optionset = {
 	new Chart(line, {
 		  type: 'line',
 		  data: {
-		    labels: [1500,1600,1700,1750],
-		    datasets: [{
-		        data: [86,114,106,106],
-		        label: "Africa",
-		        borderColor: "#3e95cd",
-		        fill: false
-		      }, {
-		        data: [282,350,411,502],
-		        label: "Asia",
-		        borderColor: "#8e5ea2",
-		        fill: false
-		      }, {
-		        data: [168,170,178,190],
-		        label: "Europe",
-		        borderColor: "#3cba9f",
-		        fill: false
-		      }, {
-		        data: [40,20,10,16],
-		        label: "Latin America",
-		        borderColor: "#e8c3b9",
-		        fill: false
-		      }
-		    ]
+		    labels: mainyears,
+		    datasets: datashare
 		  },
 		  options: optionset
 		});
@@ -79,8 +107,31 @@ var optionset = {
 			    options: optionset
 			});
 	  };
+function getRandomColor() {
+		  var letters = '0123456789ABCDEF';
+		  var color = '#';
+		  for (var i = 0; i < 6; i++) {
+		    color += letters[Math.floor(Math.random() * 16)];
+		  }
+		  return color;
+		}
+
 
 $(document).ready(function(){
     lineChart();
 		pieChart();
+		// var myKey1 = "1050";
+		// var myKey2 = "1051";
+		//
+		// line chart list of object
+		// var myObj1 = {
+		// 	year
+		// 	Reason
+		// 	total migrants for that Reason
+		//
+		// };
+		//
+		// var map = new Object(); // or var map = {};
+		// map[myKey1] = myObj1;
+		// map[myKey2] = myObj2;
 });
