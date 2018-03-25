@@ -1,0 +1,58 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+
+.dd {
+		border: 0.5px solid black;
+		margin-top: 0px;
+		margin-bottom: 0px;
+		margin-right: 0px;
+		margin-left: 0px;
+		background-color: lightgrey;
+		box-sizing: border-box;
+}
+
+
+.button {
+		    background-color: #0000ff;
+			border: 1px;
+			color: #000000;
+			padding: 10px 10px;
+			text-align: center;
+			text-decoration: underline;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+		}
+.maps{
+			position:absolute;
+			top: 20%;
+			left:30%;
+			margin-right:-70%;
+
+		}
+    
+.body{
+		background-image("india.jpg");
+		}
