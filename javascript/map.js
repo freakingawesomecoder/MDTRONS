@@ -8,7 +8,7 @@ var mapOptions = {
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     styles:[
     {"featureType":"administrative.country","elementType":"geometry.stroke","stylers":[{"visibility":"off"}]},
-    {"featureType":"administrative.country","elementType":"labels","stylers":[{"visibility":"off"}]},
+    {"featureType":"administrative.country","elementType":"labels","stylers":[{"visibility":"on"}]},
     {"featureType":"administrative.province","elementType":"geometry.fill","stylers":[{"lightness":"-3"}]},
     {"featureType":"administrative.province","elementType":"labels","stylers":[{"visibility":"off"}]},
     {"featureType":"administrative.locality","elementType":"labels","stylers":[{"visibility":"off"}]},
