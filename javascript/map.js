@@ -11,7 +11,7 @@ var mapOptions = {
     {"featureType":"administrative.country","elementType":"labels","stylers":[{"visibility":"on"}]},
     {"featureType":"administrative.province","elementType":"geometry.fill","stylers":[{"lightness":"-3"}]},
     {"featureType":"administrative.province","elementType":"labels","stylers":[{"visibility":"off"}]},
-    {"featureType":"administrative.locality","elementType":"labels","stylers":[{"visibility":"on"}]},
+    {"featureType":"administrative.locality","elementType":"labels","stylers":[{"visibility":"off"}]},
     {"featureType":"administrative.neighborhood","elementType":"labels","stylers":[{"visibility":"off"}]},
     {"featureType":"administrative.land_parcel","elementType":"labels","stylers":[{"visibility":"off"}]},
     {"featureType":"landscape","elementType":"labels","stylers":[{"visibility":"off"}]},
