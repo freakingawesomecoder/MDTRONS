@@ -45,14 +45,18 @@ li a:hover {
 			margin: 4px 2px;
 			cursor: pointer;
 		}
-.maps{
+.maps {
 			position:absolute;
 			top: 20%;
 			left:30%;
 			margin-right:-70%;
 
 		}
-    
-.body{
+
+.body {
 		background-image("india.jpg");
-		}
+}
+
+.head {
+        padding-left: 10px;
+    }
