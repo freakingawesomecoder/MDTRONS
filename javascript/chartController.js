@@ -1,6 +1,7 @@
 
 //Line chart related changes
 function lineChart() {
+<<<<<<< HEAD
 	var myObj1 = [{
 		'year':1990,
 		'reason':"Agriculture based",
@@ -35,24 +36,48 @@ function lineChart() {
 		'totalmigrants': 502
 	}];
 var years = _.pluck(myObj1, 'year');
+=======
+
+var trends = {};
+	// $.ajax({url: "http://172.29.10.226:10000/migration", success: function(result) {
+	// 	console.log(result);
+  //   }});
+
+var totalmigrants = "totalmigrants";
+var reason = "reason";
+var year = "year";
+
+		var xmlhttp = new XMLHttpRequest();
+		var url = "http://172.29.10.226:10000/migration";
+
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var myArr = JSON.parse(this.responseText);
+
+    }
+};
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+var years = _.pluck(trends, year);
+>>>>>>> edceea94e78649df790502066d5bea27e5b1ad15
 var mainyears = _.uniq(years);
-var reasons = _.pluck(myObj1, 'reason');
+var reasons = _.pluck(trends, 'reason');
 var mainreasons = _.uniq(reasons);
 var datashare = [];
 for (var i = 0; i < mainreasons.length; i++) {
 
-	var reasonCat = _.filter(myObj1, { 'reason': mainreasons[i] });
-	var obj = {};
-	obj.data =  _.pluck(reasonCat, 'totalmigrants');
-	obj.label = mainreasons[i];
-	obj.borderColor =  getRandomColor();
-	obj.fill=  false;
-	datashare.push(obj);
-}
+	var reasonCat = _.filter(trends, { 'reason': mainreasons[i] });
+		var obj = {};
+		obj.data =  _.pluck(reasonCat, 'totalmigrants');
+		obj.label = mainreasons[i];
+		obj.borderColor =  getRandomColor();
+		obj.fill=  false;
+		datashare.push(obj);
+	}
 
 
 var optionset = {
-	responsive: false,
+ 	responsive: false,
 	title: {
 		display: true,
 		text: 'Migration Trends'
