@@ -3,35 +3,35 @@
 function lineChart() {
 	var myObj1 = [{
 		'year':1990,
-		'reason':"Work based",
+		'reason':"Agriculture based",
 		'totalmigrants': 86
 	},{
 		'year':1991,
-		'reason':"Work based",
+		'reason':"Agriculture based",
 		'totalmigrants': 114
 	},{
 		'year':1992,
-		'reason':"Work based",
+		'reason':"Agriculture based",
 		'totalmigrants': 106
 	},{
 		'year':1994,
-		'reason':"Work based",
+		'reason':"Agriculture based",
 		'totalmigrants': 106
 	},{
 		'year':1990,
-		'reason':"natural based",
+		'reason':"Fishing based",
 		'totalmigrants': 282
 	},{
 		'year':1991,
-		'reason':"natural based",
+		'reason':"Fishing based",
 		'totalmigrants': 350
 	},{
 		'year':1992,
-		'reason':"natural based",
+		'reason':"Fishing based",
 		'totalmigrants': 411
 	},{
 		'year':1994,
-		'reason':"natural based",
+		'reason':"Fishing based",
 		'totalmigrants': 502
 	}];
 var years = _.pluck(myObj1, 'year');
@@ -55,7 +55,7 @@ var optionset = {
 	responsive: false,
 	title: {
 		display: true,
-		text: 'World population per region'
+		text: 'Migration Trends'
 	}
 };
 

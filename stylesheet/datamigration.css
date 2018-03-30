@@ -50,9 +50,9 @@ li a:hover {
 			top: 20%;
 			left:30%;
 			margin-right:-70%;
-
+	display: inline-block;
 		}
-    
+
 .body{
 		background-image("india.jpg");
 		}

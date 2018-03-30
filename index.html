@@ -19,21 +19,24 @@
 </head>
 <body>
     <div class="dd">
-      <img src="assets/icon1fish.ico" alt="icon1fish" height="42" width="42">
+      <!-- <img src="assets/icon1fish.ico" alt="icon1fish" height="42" width="42"> -->
        <h1 font-style="italic">
-         India Migration Portal
+         Indian International Skill Centre
        </h1>
     </div>
     <ul>
-      <li><a class="active" href="#home">Basic</a></li>
-      <li><a href="#news">Inmigrants</a></li>
-      <li><a href="#contact">Outmigrants</a></li>
+      <li><a class="active" href="#home">Home</a></li>
+      <li><a href="#news">National</a></li>
+      <li><a href="#contact">International</a></li>
     </ul>
 
-    <div id="map" style="text-align: center; margin-top: 40px; margin-left: 320px; margin-bottom: 40px;width:800px; height:600px">
+
+    <div id="map" style="text-align: center; margin-top: 40px; margin-left:150px;margin-bottom: 40px;width:800px; height:650px;">
     </div>
+    <span id="child1" style="text-align:center;margin-left:150px;margin-top:100px"> <canvas id="line-chart" style="display:inline"></canvas></span>
+  <span id="child2" style="display: inline;"><canvas id="pie-chart" style="display: inline;"></canvas></span>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeU-vLBclFiFFPc1GGWd7op6sn35Y07dg&callback=myMap"></script>
-    <canvas id="line-chart"></canvas>
-    <canvas id="pie-chart"></canvas>
+
+
 </body>
 </html>

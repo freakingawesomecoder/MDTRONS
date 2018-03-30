@@ -130,7 +130,7 @@ map.addListener('center_changed', function() {
               });
 
        //Current location Finding code program
-        if (navigator.geolocation) {
+      /*  if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
             var pos = {
               lat: position.coords.latitude,
@@ -148,7 +148,7 @@ map.addListener('center_changed', function() {
           // Browser doesn't support Geolocation
           handleLocationError(false, infoWindow, map.getCenter());
         }
-      }
+      } */
 
       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);
@@ -158,7 +158,7 @@ map.addListener('center_changed', function() {
         infoWindow.open(map);
 
           map.data.loadGeoJson('countries-hires.geojson');
-          //map.data.loadGeoJson('india.geojson')
+          map.data.loadGeoJson('india.geojson');
 
           map.data.setStyle(function(feature) {
           var color = '#B0B0B0';

@@ -46,6 +46,11 @@ map.addListener('center_changed', function() {
          }, 8000);
         });
 
+        var infowindow = new google.maps.InfoWindow({
+          content:"hello",
+          //maxWidth: 100
+        });
+
         var lineSymbol = {
            path: 'M 0,-1 0,1',
            strokeColor: '#2d2db9',
@@ -69,18 +74,14 @@ map.addListener('center_changed', function() {
 
         animateCircle(line);
 
-        var line = new google.maps.Polyline({
-          path:[{lat: 17.3850, lng: 78.4867},
-          {lat:28.644800, lng: 77.580643}] ,
-
-          strokeOpacity: 0,
-          icons: [{
-            icon: lineSymbol,
-            offset: '0',
-            repeat: '20px'
-              }],
-          map: map
-        });
+        var linePath = new google.maps.Polyline({
+         path: [{lat: 13.067439, lng: 80.237617},{lat: 28.644800, lng: 77.486721}],
+         //strokeOpacity: 0,
+         strokeColor: "#FF0000",
+         strokeOpacity: 1,
+         strokeWeight: 2,
+         map: map
+       });
 
         animateCircle(line);
 
@@ -118,6 +119,8 @@ map.addListener('center_changed', function() {
 
             infoWindow = new google.maps.InfoWindow;
 
+
+
       /* //Current location Finding code program
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
@@ -147,7 +150,7 @@ map.addListener('center_changed', function() {
         infoWindow.open(map); */
 
           map.data.loadGeoJson('countries-hires.geojson');
-          map.data.loadGeoJson('indian-states.geojson')
+          map.data.loadGeoJson('indian-states.geojson');
 
           map.data.setStyle(function(feature) {
           var color = '#B0B0B0';
@@ -181,6 +184,9 @@ map.addListener('center_changed', function() {
         map.data.addListener('mouseout', function(event) {
           map.data.revertStyle();
         });
+
+
+
 
 
 
