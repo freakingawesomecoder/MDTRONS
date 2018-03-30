@@ -103,23 +103,3 @@ function getRandomColor() {
 		  }
 		  return color;
 		}
-
-
-$(document).ready(function(){
-    lineChart();
-		pieChart();
-		// var myKey1 = "1050";
-		// var myKey2 = "1051";
-		//
-		// line chart list of object
-		// var myObj1 = {
-		// 	year
-		// 	Reason
-		// 	total migrants for that Reason
-		//
-		// };
-		//
-		// var map = new Object(); // or var map = {};
-		// map[myKey1] = myObj1;
-		// map[myKey2] = myObj2;
-});

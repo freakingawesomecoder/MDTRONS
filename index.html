@@ -5,39 +5,45 @@
   <title>Migration Trends</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="stylesheet/datamigration.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="shortcut icon" type="image/x-icon" href="assets/icon1fish.ico" />
 
+
+  <script src="node_modules/angular/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
   <script src="node_modules/jquery/dist/jquery.min.js"></script>
   <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="node_modules/lodash/lodash.js"></script>
   <script src="node_modules/chart.js/dist/Chart.min.js"></script>
   <script src="node_modules/patternomaly/dist/patternomaly.js"></script>
   <script src="node_modules/underscore/underscore.js"></script>
+  <script src="javascript/chartController.js"></script>
+  <script src="javascript/navigation.js"></script>
+  <script src="javascript/map.js"></script>
+  <script src="app.js"></script>
 
-  <script type="text/javascript" src="javascript/chartController.js"></script>
-  <script type="text/javascript" src= "javascript/map.js"></script>
 
   <link rel="stylesheet" href="stylesheet/datamigration.css">
-
 </head>
+
 <body>
+  <div ng-app="datamigration">
     <div class="dd">
        <h1 class="head" font-style="italic">
           Indian Interanational skill centre
        </h1>
     </div>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#news">National</a></li>
-      <li><a href="#contact">Interanational</a></li>
-      <li><a href="#about-us">About Us</a></li>
+      <li><a href="#!">Home</a></li>
+      <li><a href="#!national">National</a></li>
+      <li><a href="#!international">International</a></li>
+      <li><a href="#!about-us">About Us</a></li>
     </ul>
 
-    <div id="map" style="text-align: center; margin-top: 40px; margin-left: 320px; margin-bottom: 40px;width:800px; height:600px">
+  <div ng-view></div>
+
+
+
     </div>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeU-vLBclFiFFPc1GGWd7op6sn35Y07dg&callback=myMap"></script>
-    <canvas id="line-chart"></canvas>
-    <canvas id="pie-chart"></canvas>
+
 </body>
 </html>
