@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Migration Layer</title>
+    <link rel="stylesheet" href="./lib/leaflet.css" />
+    <style>
+    html,body{
+        margin-top: 200px;
+        padding: 10%;
+    }
+    #map{
+        position: absolute;
+        height: 70%;
+        width: 50%;
+    }
+    #event{
+        position: absolute;
+        top: 50px;
+        right: 600px;
+        height: 100px;
+        width: 400px;
+        z-index: 10000;
+    }
+    .btn{
+        border-color:gray;
+        border-width: 2px;
+        background-color:white;
+   }
+    </style>
+<link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+</head>
+
+<body>
+<div class="wrapper row1">
+    <header id="header" class="hoc clear">
+      <!-- ################################################################################################ -->
+      <div id="logo" class="fl_left">
+
+      </div>
+      <nav id="mainav" class="fl_right">
+        <ul class="clear">
+          <li class="active"><a href="index.html">Home</a></li>
+          <li><a class="drop" href="#">Pages</a>
+            <ul>
+              <li><a href="pages/gallery.html">Gallery</a></li>
+              <li><a href="pages/full-width.html">Full Width</a></li>
+              <li><a href="pages/sidebar-left.html">Sidebar Left</a></li>
+              <li><a href="pages/sidebar-right.html">Sidebar Right</a></li>
+              <li><a href="pages/basic-grid.html">Basic Grid</a></li>
+            </ul>
+       <li><a href="/home/kesavanrog/Desktop/site/Madhyapradesh.html">Map</a></li>
+<li><a href="/home/kesavanrog/Desktop/site/ContactFrom/index.html">Contact US</a></li>
+
+      </nav>
+      <!-- ################################################################################################ -->
+    </header>
+  </div>
+    <div id="map"></div>
+    <div id='event'>
+    </div>
+<div id='event'>
+        <input type="button" value="setData" class="btn" onclick="setData()">
+
+    </div>
+    <script src="./lib/leaflet.js"></script>
+    <script src='./src/src.js'></script>
+    <script>
+
+        var lrmap = L.map('map').setView([20, 70], 5);
+        L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/dark-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoia2VzYXZhbnJvZyIsImEiOiJjamY2dW82ZTgyaml6MndvaGkxM3dqeDdnIn0.prAVKAc5j7l_Y-VBhM08NA')
+        .addTo(lrmap);
+
+        var data = [{"from":[85.80024404777458,25.682976654287003],"to":[78.82868437508478,23.605752795699217],"labels":["null","madhyapradesh"],"color":"#10ff33"},{"from":[80.64974880782006,27.333295957463548],"to":[78.82868437508478,23.605752795699217],"labels":[null,"null"],"color":"#10ff33"},{"from":[84.78646861143454,20.179060950335725],"to":[78.82868437508478,23.605752795699217],"labels":[null,"null"],"color":"#10ff33"}];
+
+        var data2=[{"from":[-73.875523,40.781063],"to":[-80.247887,25.792296],"labels":["New York","Maima"],"color":"#05ffd9"},{"from":[-73.875523,40.781063],"to":[-118.2705,33.9984],"labels":[null,"Los Angeles"],"color":"#00ccff"},{"from":[-73.875523,40.781063],"to":[-87.724088,41.917846],"labels":[null,"Chicago"],"color":"#ffc726"},{"from":[-73.875523,40.781063],"to":[-71.058437,42.35902],"labels":[null,"Boston"],"color":"#e9ff20"},{"from":[-73.875523,40.781063],"to":[-75.683057,45.42172],"labels":[null,"Ottawa"],"color":"#99ff1b"}];
+
+        var migrationLayer = new L.migrationLayer({
+            map: lrmap,
+            data: data,
+            pulseRadius:30,
+            pulseBorderWidth:3,
+            arcWidth:1,
+            arcLabel:true,
+            arcLabelFont:'10px sans-serif',
+            }
+        );
+        migrationLayer.addTo(lrmap);
+
+        function setData(){
+            migrationLayer.setData(data2);
+        }
+        function hide(){
+            migrationLayer.hide();
+        }
+        function show(){
+            migrationLayer.show();
+        }
+        function play(){
+            migrationLayer.play();
+        }
+        function pause(){
+            migrationLayer.pause();
+        }
+        function destroy() {
+            migrationLayer.destroy();
+        }
+        function lineChart() {
+        	var myObj1 = [{
+        		'year':1990,
+        		'reason':"Agriculture based",
+        		'totalmigrants': 86
+        	},{
+        		'year':1991,
+        		'reason':"Agriculture based",
+        		'totalmigrants': 114
+        	},{
+        		'year':1992,
+        		'reason':"Agriculture based",
+        		'totalmigrants': 106
+        	},{
+        		'year':1994,
+        		'reason':"Agriculture based",
+        		'totalmigrants': 106
+        	},{
+        		'year':1990,
+        		'reason':"Fishing based",
+        		'totalmigrants': 282
+        	},{
+        		'year':1991,
+        		'reason':"Fishing based",
+        		'totalmigrants': 350
+        	},{
+        		'year':1992,
+        		'reason':"Fishing based",
+        		'totalmigrants': 411
+        	},{
+        		'year':1994,
+        		'reason':"Fishing based",
+        		'totalmigrants': 502
+        	}];
+        var years = _.pluck(myObj1, 'year');
+        =======
+
+        var trends = {};
+        	// $.ajax({url: "http://172.29.10.226:10000/migration", success: function(result) {
+        	// 	console.log(result);
+          //   }});
+
+        var totalmigrants = "totalmigrants";
+        var reason = "reason";
+        var year = "year";
+        var years = _.pluck(trends, year);
+        var mainyears = _.uniq(years);
+        var reasons = _.pluck(trends, 'reason');
+        var mainreasons = _.uniq(reasons);
+        var datashare = [];
+        for (var i = 0; i < mainreasons.length; i++) {
+
+        	var reasonCat = _.filter(trends, { 'reason': mainreasons[i] });
+        		var obj = {};
+        		obj.data =  _.pluck(reasonCat, 'totalmigrants');
+        		obj.label = mainreasons[i];
+        		obj.borderColor =  getRandomColor();
+        		obj.fill=  false;
+        		datashare.push(obj);
+        	}
+
+
+        var optionset = {
+         	responsive: false,
+        	title: {
+        		display: true,
+        		text: 'Migration Trends'
+        	}
+        };
+
+        	var line = document.getElementById("line-chart");
+        	line.style.width = '500px';
+        	line.style.height = '250px';
+        	new Chart(line, {
+        		  type: 'line',
+        		  data: {
+        		    labels: mainyears,
+        		    datasets: datashare
+        		  },
+        		  options: optionset
+        		});
+          };
+
+        	function pieChart() {
+        		var optionset = {
+        			responsive: false,
+        			title: {
+        				display: true,
+        				text: 'Migration details'
+        			}
+        		};
+        			var pie = document.getElementById("pie-chart");
+        			pie.style.width = '500px';
+        			pie.style.height = '250px';
+        			// For a pie chart
+        			var datas = {
+        			datasets: [{
+        		        backgroundColor: [
+        		            pattern.draw('square', '#ff6384'),
+        								pattern.draw('circle', '#36a2eb'),
+        								pattern.draw('diamond', '#cc65fe')
+        		        ],
+        					data: [10, 20, 30]
+        			}],
+
+        			labels: [
+        				// These labels appear in the legend and in the tooltips when hovering different arcs
+        					'Red',
+        					'Yellow',
+        					'Blue'
+        			]
+        		};
+        			var myPieChart = new Chart(pie, {
+        			    type: 'pie',
+        			    data: datas,
+        			    options: optionset
+        			});
+        	  };
+        function getRandomColor() {
+        		  var letters = '0123456789ABCDEF';
+        		  var color = '#';
+        		  for (var i = 0; i < 6; i++) {
+        		    color += letters[Math.floor(Math.random() * 16)];
+        		  }
+        		  return color;
+        		}
+
+
+        $(document).ready(function(){
+            lineChart();
+        		pieChart();
+        		// var myKey1 = "1050";
+        		// var myKey2 = "1051";
+        		//
+        		// line chart list of object
+        		// var myObj1 = {
+        		// 	year
+        		// 	Reason
+        		// 	total migrants for that Reason
+        		//
+        		// };
+        		//
+        		// var map = new Object(); // or var map = {};
+        		// map[myKey1] = myObj1;
+        		// map[myKey2] = myObj2;
+        });
+    </script>
+</body>
+
+</html>
