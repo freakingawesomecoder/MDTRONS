@@ -1,27 +1,16 @@
 
 //Line chart related changes
-function lineChart() {
+function lineChart(value) {
 
-var trends = {};
+var trends = value;
+var totalmigrants = "totalmigrants";
+var reason = "reason";
+var year = "year";
 	// $.ajax({url: "http://172.29.10.226:10000/migration", success: function(result) {
 	// 	console.log(result);
   //   }});
 
-var totalmigrants = "totalmigrants";
-var reason = "reason";
-var year = "year";
 
-		var xmlhttp = new XMLHttpRequest();
-		var url = "http://172.29.10.226:10000/migration";
-
-xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        var myArr = JSON.parse(this.responseText);
-
-    }
-};
-xmlhttp.open("GET", url, true);
-xmlhttp.send();
 var years = _.pluck(trends, year);
 var mainyears = _.uniq(years);
 var reasons = _.pluck(trends, 'reason');
@@ -103,3 +92,22 @@ function getRandomColor() {
 		  }
 		  return color;
 		}
+function serviceCall() {
+		// $.ajax({url: "http://172.29.10.226:10000/migration", success: function(result) {
+		// 	console.log(result);
+	  //   }});
+
+
+
+			var xmlhttp = new XMLHttpRequest();
+			var url = "http://ec2-34-216-21-144.us-west-2.compute.amazonaws.com:10000";
+
+	xmlhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	        var myArr = JSON.parse(this.responseText);
+					lineChart(myArr);
+	    }
+	};
+	xmlhttp.open("GET", url, true);
+xmlhttp.send();
+}
