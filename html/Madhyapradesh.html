@@ -32,7 +32,7 @@
 <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
 </head>
 
-<body>
+<body onload="serviceCall()">
 <div class="wrapper row1">
     <header id="header" class="hoc clear">
       <!-- ################################################################################################ -->
@@ -50,6 +50,7 @@
               <li><a href="pages/sidebar-right.html">Sidebar Right</a></li>
               <li><a href="pages/basic-grid.html">Basic Grid</a></li>
             </ul>
+
        <li><a href="/home/kesavanrog/Desktop/site/Madhyapradesh.html">Map</a></li>
 <li><a href="/home/kesavanrog/Desktop/site/ContactFrom/index.html">Contact US</a></li>
 
@@ -62,7 +63,8 @@
     </div>
 <div id='event'>
         <input type="button" value="setData" class="btn" onclick="setData()">
-
+        <canvas id="line-chart"></canvas>
+        <canvas id="pie-chart"></canvas>
     </div>
     <script src="./lib/leaflet.js"></script>
     <script src='./src/src.js'></script>
@@ -106,44 +108,9 @@
         function destroy() {
             migrationLayer.destroy();
         }
-        function lineChart() {
-        	var myObj1 = [{
-        		'year':1990,
-        		'reason':"Agriculture based",
-        		'totalmigrants': 86
-        	},{
-        		'year':1991,
-        		'reason':"Agriculture based",
-        		'totalmigrants': 114
-        	},{
-        		'year':1992,
-        		'reason':"Agriculture based",
-        		'totalmigrants': 106
-        	},{
-        		'year':1994,
-        		'reason':"Agriculture based",
-        		'totalmigrants': 106
-        	},{
-        		'year':1990,
-        		'reason':"Fishing based",
-        		'totalmigrants': 282
-        	},{
-        		'year':1991,
-        		'reason':"Fishing based",
-        		'totalmigrants': 350
-        	},{
-        		'year':1992,
-        		'reason':"Fishing based",
-        		'totalmigrants': 411
-        	},{
-        		'year':1994,
-        		'reason':"Fishing based",
-        		'totalmigrants': 502
-        	}];
-        var years = _.pluck(myObj1, 'year');
-        =======
+        function lineChart(value) {
 
-        var trends = {};
+        var trends = value;
         	// $.ajax({url: "http://172.29.10.226:10000/migration", success: function(result) {
         	// 	console.log(result);
           //   }});
@@ -234,24 +201,20 @@
         		}
 
 
-        $(document).ready(function(){
-            lineChart();
-        		pieChart();
-        		// var myKey1 = "1050";
-        		// var myKey2 = "1051";
-        		//
-        		// line chart list of object
-        		// var myObj1 = {
-        		// 	year
-        		// 	Reason
-        		// 	total migrants for that Reason
-        		//
-        		// };
-        		//
-        		// var map = new Object(); // or var map = {};
-        		// map[myKey1] = myObj1;
-        		// map[myKey2] = myObj2;
-        });
+            function serviceCall() {
+
+            			var xmlhttp = new XMLHttpRequest();
+            			var url = "http://ec2-34-216-21-144.us-west-2.compute.amazonaws.com:10000";
+
+            	xmlhttp.onreadystatechange = function() {
+            	    if (this.readyState == 4 && this.status == 200) {
+            	        var myArr = JSON.parse(this.responseText);
+            					lineChart(myArr);
+            	    }
+            	};
+            	xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+            }
     </script>
 </body>
 
